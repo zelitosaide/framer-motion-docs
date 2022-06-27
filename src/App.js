@@ -24,7 +24,7 @@ const app = {
   paddingLeft: '11rem',
   paddingRight: '11rem',
   background: '#1A1A1A',
-  width: '100vw',
-  // height: '100vh',
+  width: '100%',
+  minHeight: '100vh',
   boxSizing: 'border-box'
 }

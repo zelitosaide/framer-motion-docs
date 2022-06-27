@@ -10,7 +10,7 @@ export default Wrapper
 
 const wrapper = {
   width: '100%',
-  height: '100vh',
+  minHeight: '100vh',
   background: '#ffaa00',
   display: 'flex',
   alignItems: 'center',

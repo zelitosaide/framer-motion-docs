@@ -1,4 +1,4 @@
-import { useViewportScroll } from 'framer-motion'
+import { useTransform, useViewportScroll, motion } from 'framer-motion'
 
 import Wrapper from '../../../components/wrapper/Wrapper'
 
@@ -7,14 +7,30 @@ import Wrapper from '../../../components/wrapper/Wrapper'
 const ScrollBasedAnimations = () => {
   const { scrollYProgress } = useViewportScroll()
 
+  // const initial = useTransform(scrollYProgress, (x) => {
+  //   return x + 0.05
+  // })
+
   scrollYProgress.onChange((x) => {
-    console.log(x)
+    console.log('scrollYProgress: ', x)
   })
 
-  return (
-    <Wrapper style={{ height: 'auto' }}>
-      <div style={{ padding: '4rem', position: 'relative' }}>
+  // console.log('initial: ', initial.get())
 
+  return (
+    <Wrapper>
+      <div style={{ padding: '4rem', position: 'relative' }}>
+        <motion.div 
+          style={{
+            width: '800px',
+            height: '2px',
+            position: 'fixed',
+            background: '#05F',
+            // scaleX: initial,
+            scaleX: scrollYProgress,
+            originX: 0
+          }}
+        />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
           eros eu orci condimentum fermentum. Nam vehicula nunc et nisi pretium,
@@ -526,9 +542,10 @@ const ScrollBasedAnimations = () => {
 
 export default ScrollBasedAnimations
 
-const rectangle = {
-  height: '100vh',
-  width: '200px',
-  background: '#fff',
-  overflowY: 'auto',
-}
+
+/**
+ * 
+ * Create declarative, reactive chains of MotionValues that can 
+ * 
+ * update as a result of animations and/or gestures.
+ */
